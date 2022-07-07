@@ -34,10 +34,14 @@ def evalWord(url):
         # 200
         response = urllib.request.urlopen(url)
         data_json = json.loads(response.read())
-        defintion = data_json[0]['meanings'][0]['definitions'][0]['definition']
 
-        print(defintion)
-        time.sleep(1.5)
+        synonyms= len(data_json[0]['meanings'][0]['definitions'])
+        for i in range(0,synonyms):
+            defintion = data_json[0]['meanings'][0]['definitions'][i]['definition']
+            print(defintion)
+            i+=1
+            time.sleep(1.5)
+
 
         searchagn = input("Search another word?(Y/N): ")
         while searchagn[0].lower() != 'y' and searchagn[0].lower() != 'n':
